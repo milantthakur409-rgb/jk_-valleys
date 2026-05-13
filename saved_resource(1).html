@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///C:/Users/91902/Desktop/readyprjt_files/saved_resource(1).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>ok project</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <script type="text/javascript" src="./dummy.js.download"></script>
+
+
+
+    <style id="compiled-css" type="text/css">
+      /* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'black', sans-serif;
+  background: skyblue;
+  color: #e0f2f1;
+  min-height: 100vh;
+  display: grid;
+  flex-direction: column;
+}
+h1, h2, h3 {
+  text-align: center;
+  margin: 30px 0;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px #0008;
+}
+
+/* Navbar */
+.navbar {
+  background: #00251a;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px #0009;
+}
+.navbar .logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #a5d6a7;
+  letter-spacing: 1.2px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+.nav-links li button {
+  background: transparent;
+  border: none;
+  color: #a5d6a7;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+.nav-links li button:hover,
+.nav-links li button.active {
+  background: lightpink;
+  color: #00251a;
+}
+
+/* Main content slides */
+main {
+  flex-grow: 1;
+  padding: 20px;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 0 20px #004d40;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+/* Slide */
+.slide {
+  opacity: 0;
+  transform: translateX(100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: all 0.6s ease;
+  padding: 20px;
+  pointer-events: none;
+  overflow-y: auto;
+  max-height: 600px;
+  background: rgba(0, 77, 64, 0.8);
+  border-radius: 12px;
+}
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+  pointer-events: auto;
+}
+
+/* Location buttons container */
+.location-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+.location-buttons.column {
+  flex-direction: column;
+  align-items: center;
+}
+.location-btn {
+  background: #004d40;
+  border: 2px solid #a5d6a7;
+  color: #a5d6a7;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  transition: 0.3s ease;
+  min-width: 180px;
+  text-align: center;
+}
+.location-btn:hover {
+  background: #a5d6a7;
+  color: #004d40;
+}
+
+/* Gallery */
+.gallery {
+  display: -moz-groupbox;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 15px;
+  margin: 20px auto;
+  width max: 800px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px black;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* Map iframe */
+iframe {
+  width: 100%;
+  height: 320px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 0 15px black;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 12px;
+  background: #00251a;
+  font-size: 0.9rem;
+  color: #a5d6a7;
+  letter-spacing: 1px;
+}
+
+/* Scrollbar inside slide */
+.slide::-webkit-scrollbar {
+  width: 8px;
+}
+.slide::-webkit-scrollbar-track {
+  background: #00251a;
+  border-radius: 6px;
+}
+.slide::-webkit-scrollbar-thumb {
+  background: #a5d6a7;
+  border-radius: 6px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+  main {
+    max-width: 100%;
+    padding: 10px;
+    min-height: 100vh;
+  }
+  .nav-links {
+    font-size: 0.9rem;
+  }
+  .location-btn {
+    min-width: 140px;
+    font-size: 1rem;
+  }
+  h1, h2, h3 {
+    font-size: 1.4rem;
+  }
+  .gallery {
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+  }
+}
+
+      /* EOS */
+    </style>
+
+    <style type="text/css">
+      :root {
+        color-scheme: light;
+      }
+    </style>
+
+    <script id="insert"></script>
+
+      <script src="./stringify.js.download" charset="utf-8"></script>
+      <script>
+        const customConsole = (w) => {
+          const pushToConsole = (payload, type) => {
+            w.parent.postMessage({
+              console: {
+                payload: stringify(payload),
+                type:    type
+              }
+            }, "*")
+          }
+
+          w.onerror = (message, url, line, column) => {
+            // IMPORTANT: the line needs to correspond with the REF:LINE
+            // unfortunately this number needs to be altered every time this view is changed
+            line = line - 117
+            if (line < 0){
+              pushToConsole(message, "error")
+            } else {
+              pushToConsole(`[Line ${line}] ${message}`, "error")
+              // pushToConsole(`[${line}:${column}] ${message}`, "error")
+            }
+          }
+
+          let console = (function(systemConsole){
+            return {
+              log: function(){
+                let args = Array.from(arguments)
+                pushToConsole(args, "log")
+                systemConsole.log.apply(this, args)
+              },
+              info: function(){
+                let args = Array.from(arguments)
+                pushToConsole(args, "info")
+                systemConsole.info.apply(this, args)
+              },
+              warn: function(){
+                let args = Array.from(arguments)
+                pushToConsole(args, "warn")
+                systemConsole.warn.apply(this, args)
+              },
+              error: function(){
+                let args = Array.from(arguments) // REF:LINE
+                pushToConsole(args, "error")
+                systemConsole.error.apply(this, args)
+              },
+              system: function(arg){
+                pushToConsole(arg, "system")
+              },
+              clear: function(){
+                systemConsole.clear.apply(this, {})
+              },
+              time: function(){
+                let args = Array.from(arguments)
+                systemConsole.time.apply(this, args)
+              },
+              assert: function(assertion, label){
+                if (!assertion){
+                  pushToConsole(label, "log")
+                }
+
+                let args = Array.from(arguments)
+                systemConsole.assert.apply(this, args)
+              }
+            }
+          }(window.console))
+
+          window.console = { ...window.console, ...console }
+
+          console.system("Running fiddle")
+        }
+
+        if (window.parent){
+          customConsole(window)
+        }
+      </script>
+  </head>
+  <body>
+    
+
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beautiful Valleys of Jammu &amp; Kashmir</title>
+  <link rel="stylesheet" href="file:///C:/Users/91902/Desktop/readyprjt_files/styles.css">
+  <link href="./css2" rel="stylesheet">
+
+
+  <nav class="navbar">
+    <div class="logo">JK Valleys</div>
+    <ul class="nav-links">
+      <li><button class="nav-btn active" data-target="home">Home</button></li>
+      <li><button class="nav-btn" data-target="jammu-division">Jammu Division</button></li>
+      <li><button class="nav-btn" data-target="kashmir-division">Kashmir Division</button></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- Home Slide -->
+    <section class="slide active" id="home">
+      <h1>Welcome to the Beautiful Valleys of Jammu &amp; Kashmir District</h1>
+      <p>Explore the mesmerizing valleys of Jammu &amp; Kashmir through interactive slides with beautiful images, maps, and detailed information.
+        Jammu and Kashmir is a union territory in northern India with two primary administrative divisions: the Jammu Division and the Kashmir Division. The image shows an interface for exploring the districts within these divisions. 
+Administrative Divisions
+The union territory of Jammu and Kashmir is divided into 20 administrative districts, with 10 districts in each of the two divisions.
+      </p>
+    </section>
+
+    <!-- Jammu Division Slide -->
+    <section class="slide" id="jammu-division">
+      <h2>Jammu Division</h2>
+      <p>Select a location to explore:</p>
+      <div class="location-buttons">
+        <button class="location-btn" data-target="bhaderwah">Bhaderwah Valley</button>
+        <button class="location-btn" data-target="dachhan">Dachhan Valley (Kishtwar)</button>
+      </div>
+    </section>
+
+    <!-- Bhaderwah Main Slide -->
+    <section class="slide" id="bhaderwah">
+      <h2>Bhaderwah Valley</h2>
+      <p>*Bhaderwah Valley – Quick Facts*
+
+- *Location:* Dhoon district, Jammu &amp; Kashmir; ~200 km from Jammu city.
+- *Altitude:* 1,600–2,000 m, surrounded by the Pir Panjal range.
+- *Highlights:* Lush meadows, deodar forests, Bhadar River; nearby Padri Top and Jagdamba Temple.
+- *Climate:* Mild summers (20‑30 °C), cold winters with snow.
+- *Activities:* Trekking, horse‑riding, camping, snow‑shoeing, trout fishing.
+- *Access:* Road via NH 44; nearest railhead at Udhampur; nearest airport Srinagar (~200 km).</p>
+      <div class="location-buttons column">
+        <button class="location-btn" data-target="jai-valley">Jai Valley</button>
+        <button class="location-btn" data-target="padri">Padri</button>
+        <button class="location-btn" data-target="gulli-danda">Gulli Danda</button>
+        <button class="location-btn" data-target="bhaderwah-town">Bhaderwah town</button>
+      </div>
+    </section>
+
+    <!-- Jai Valley Slide -->
+    <section class="slide" id="jai-valley">
+      <h2>Jai Valley</h2>
+      <p>Jai Valley is renowned for its wide meadows and serene environment.- Location: 32 km from Bhaderwah, Jammu &amp; Kashmir
+- Highlights: wide green meadows, deodar forests, Jai Nallah stream
+- Activities: camping, trekking, horse riding, winter snow sports
+- Accommodation: igloo huts, tents, youth hostels
+- Atmosphere: peaceful, scenic, suitable for nature lovers in summer and winter.</p>
+      <div class="gallery">
+
+<!--jai valley images  -->
+       <img src="./2018102162-olwdeplkrvsyjz9718lpmuzqu8wpq9xlzlveba6g2c.jpg">
+        <img src="./Jai_Valley.jpg">
+        <img src="./Jai_Valley_Bhaderwah_1.jpg" width="350" alt="Jai Valley Bhaderwah 1">
+       <img src="./Jai_Ghati-_bhaderwah-jammu-jammu_and_kashmir.jpg" width="350" alt="Jai Ghati Bhaderwah">
+
+
+      </div>
+      <h3>History &amp; Location</h3>
+      <p>Jai Valley is one of the most visited locations near Bhaderwah and is famous for its natural beauty and trekking routes.</p>
+      <iframe src="./embed.html" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Padri Slide -->
+    <section class="slide" id="padri">
+      <h2>Padri top</h2>
+      <p>Padri, 40 km north of Bhaderwah on NH 44 at about 10,200 ft, is a snow‑capped meadow famed for panoramic views, trekking, horse‑riding, paragliding and winter sports; locals play an informal “Padri Ball” game across the grass. Nearby Bhal Padri (11,000 ft, “Valley of Flowers”) lies 10 km away. Visit May‑June for wildflowers, September for quiet weather, or December‑February for snow, and remember to bring warm layers and check road conditions.</p>
+
+
+      <div class="gallery">  
+
+     <img src="./Padri_Bhaderwah.jpg">
+
+    <img src="./R.c6f25340879c907b9861702cf67ce741">
+
+    
+   <img src="./paye-meadows-kpk-shogran3-min.jpg">
+
+   <img src="./IMG_20231226_201405.jpg" alt="padri">
+
+
+      <iframe src="./embed(1).html" allowfullscreen="" loading="lazy"></iframe>
+    </div></section>
+
+    <!-- Gulli Danda Slide -->
+
+
+    <section class="slide" id="gulli-danda">
+      <h2>Gulli Danda</h2>
+      <p>Gulli Danda is a beautiful meadow known for its natural splendor and hiking trails.</p>
+      <div class="gallery">
+
+     
+      <img src="./hqdefault.jpg">
+      
+     <img src="./hqdefault(1).jpg" alt="gulidanda">
+
+     <img src="./maxresdefault.jpg">
+       
+     <img src="./Pine-Trees-of-Dalhousie-1-1024x682.jpg" alt="gullidanda">
+     
+      <img src="./Guldanda-charms-tourists-at-Vibrant-Bhaderwah-Festival.jpg" alt="gullidanda">
+
+      <img src="./R.74d42ea9ec58e06efb62ef258861e224" alt="gulli-danda">
+
+      </div>
+      <h3> the map location</h3>
+      <iframe src="./embed(2).html" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Top Fish Pond Slide -->
+    <section class="slide" id="bhaderwah-town">
+      <h2>Bhaderwah Town</h2>
+     <p> about bhaderwah town </p>
+
+
+
+
+      <div class="gallery">
+
+      <img src="./Bhaderwah-1-1-1024x683.jpg" alt="bhaderwah">
+
+       <img src="./maxresdefault(1).jpg" alt="top-fish-pond">
+
+       <img src="./7.jpg" alt="campus">
+
+       <img src="./Bhaderwah-Fort-2.jpg" alt="qilla ">
+       
+
+       <img src="./maxresdefault(2).jpg" alt="bhaderwah">
+        
+        <img src="./Bhaderwah-1200x900-1.jpg">
+
+
+      <img src="./Entrance of Government Degree College Bhaderwah_Campus-view.jpg" alt="college">
+         <h2> Location </h2>
+      </div>
+      <iframe src="./embed(3).html" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Dachhan Valley Slide -->
+    <section class="slide" id="dachhan">
+      <h2>Dachhan Valley (Kishtwar)</h2>
+      <p>Explore the scenic spots in Dachhan Valley.</p>
+      <div class="location-buttons column">
+        <button class="location-btn" data-target="janakpur">Janakpur Dachhan</button>
+        <button class="location-btn" data-target="brahmsarover">Brahmsarover Dachhan</button>
+        <button class="location-btn" data-target="saterseen-dachhan">saterseen Dachhan</button>
+        <button class="location-btn" data-target="hudh-mata"> hudh mata Dachhan</button>
+      </div>
+    </section>
+
+    <!-- Dachhan Locations Slides -->
+    <section class="slide" id="janakpur">
+      <h2>Janakpur Dachhan</h2>
+      <p>Janakpur is a revenue village and a Panchayat Halqa located within the larger administrative Dachhan Block (also known as Dachhan Tehsil or Niabat) in the Kishtwar district of Jammu and Kashmir, India.</p> <br>
+      <div class="gallery">
+
+     <img src="./FB_IMG_1499323314663.jpg" width="100" height"200"="">
+     <alt="janalpur">
+
+     <img src="./maxresdefault(3).jpg" alt="Janakpur">
+
+        
+
+
+      </alt="janalpur"></div>
+      <p>Janakpur is a beautiful location known for its serene landscape and cultural significance in Dachhan Valley.</p>
+     <iframe src="./embed(4).html" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </section>
+
+    <section class="slide" id="brahmsarover">
+      <h2> Brahmsarover  mountain also known as (Brahma Peak)</h2><br>
+      <p>The Brahma Peaksin Kishtwar are a mountain range in the Kishtwar Himalayas, consisting of peaks such as Brahma I (6,416 m), Brahma II (6,485 m), Arjun (6,230 m), and Flat Top (6,103 m). It is accessible through Kishtwar National Park and is a popular destination for trekking , especially via the Brahma Valley Trek .</p>
+
+      <div class="gallery">
+
+
+        <img src="./Braham-Sarovar-at-bottom-of-the-Brahma-Peaks-.jpg" alt="Brahmsarover">
+      
+      <img src="./brahma peak17.jpg" alt="the way of brahma">
+   
+    <img src="./947225_146805662174322_1114421689_n.jpg" alt="brahma peak">
+
+    <img src="./maxresdefault(4).jpg" alt="view">
+
+
+    <img src="./brahma peak11.jpg" alt="way">
+
+      </div>
+      <p>Location: At the foot of the Brahma Peaks in the Dachhan region of Kishtwar, Jammu and Kashmir.
+Appearance: It is a small, icy-cold lake with brilliant sky blue water.
+Significance: It is believed to be inhabited by Lord Brahma, and the lake is considered a holy site. The lake's name is derived from the Brahma Peaks, and it reflects the peaks in its waters.</p>
+
+ <p>Below is the map showing the approximate location of Brammah Peak:</p>
+    <iframe src="./embed(5).html" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    </section>
+
+    <section class="slide" id="saterseen-dachhan">
+      <h2> Satercheen Dachhan</h2>
+      <p>near brahma peak and hudh mata temple</p>
+      <p>here are some unexplored  wonderfull pictures that are located in dachhan kishtwar 182205</p> <br>
+
+         <p></p><h1>Unexplored Gallery</h1><p></p>
+      <div class="gallery">
+     
+     <img src="./maxresdefault(5).jpg" alt="view">
+      
+     <img src="./OIP.ZMVmdk7UjvmyQOblaanW8QHaE8">
+
+     <img src="./Brahma_Peaks_National-Park-1536x1024.jpg" alt="view">
+
+     <img src="./abhilash-dacchan_GOPR2551-scaled-1.jpg" alt="sateerchen ground">
+
+     <img src="./OIP.Q6_hmZ-easfFq6QYNqfJeAHaHa" alt="chicha">
+
+      </div>
+      <p> Thankyou For Visiting here !</p>
+     
+     <iframe src="./embed(6).html" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+     
+    </section>
+
+    <section class="slide" id="hudh-mata">
+      <h2>hudh-mata Dachhan</h2>
+
+      <p></p><h5>The Hudh Mata Yatra is an annual spiritual pilgrimage in Dachhan, Kishtwar, dedicated to Goddess Hudh Mata, offering a profound blend of devotion, mythology, and the natural grandeur of the Himalayas.</h5><p></p>
+      <div class="gallery">
+
+       
+       <img src="./Shri-Ram-temple-last-stop-of-yatra-night-stay.jpg" alt="Kaikoot">
+
+       <img src="./OIP.mRYThUBYZvjclQfUERtB6AHaFj" alt=" hudh-matabhawan">
+
+       <img src="./maxresdefault(6).jpg" alt="yatraa">
+
+
+       <p></p><h2>The Tri Sandhya Stream
+The name 'Trisandhya' literally refers to a phenomenon where the stream flows three times a day.</h2><p></p> <p></p><h5>Tri-Sandhya is a miracle of nature and a gift to humanity. Tri Sandhya, a wonderful stream flowing down the slopes of a mountain twice or thrice a day is considered as very scared by the devotees. The main characteristics of this stream is that after flowing for some time from the top of the mountain down the ravine, it gets receding and surprisingly from downwards to upwards and finally disappears leaving no trace of water. Astonishingly, there is neither a lake/pond nor any glacier at the top of the mountain where-from it may originate. Pilgrims come from far off places to find an opportunity for a bath. Some get a chance to bath in the stream which is instantly seen receding upwards.</h5><p></p>
+    
+       <img src="./hudh mata ji.jpeg" alt="trisandhya mata">
+
+       <img src="./hqdefault(2).jpg" alt="trisandhya mata">
+
+      </div>
+      <p>Sacred Sites and Natural Wonders
+Hudh Mata Shrine: Located at an altitude of approximately 2,900 meters in Anant Nalla, Dachhan, featuring a cave with three naturally formed ice lingams representing Shiva, Parvati, and Ganesha. Milky water drips from the cave ceiling onto the lingams, symbolizing divine blessings ( 
+2
+).
+Tri Sandhya Jaldhara: A miraculous stream flowing three times a day, thought to perform prayers for Lord Shiva, Parvati, and Brahma. Bathing here is considered highly auspicious ( 
+2
+).
+Brahmsar: A serene sky-blue lake at the foot of Brahma Peaks offering holy dips that devotees believe cleanse sins.
+Other Attractions: Doodh Ganga river, Brahma Peaks, Ram Mandir Kaikoot, Maa Kali Temple at Dilgoot, and nearby hot springs at Kiyar Dachhan enhance the spiritual and natural experience</p>
+
+
+<img src="./oar2.jpg" alt="doodh ganga">
+
+<p></p><h3>Doodh Ganga: Immerse yourself in the tranquil ambiance of the Doodh Ganga, a pristine river known for its milky white appearance</h3><p></p>
+
+ <iframe src="./embed(7).html" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+      
+    </section>
+
+    <!-- Kashmir Division Slide -->
+    <section class="slide" id="kashmir-division">
+      <h2>Kashmir Division</h2>
+      <p>Select a location to explore:</p>
+      <div class="location-buttons">
+        <button class="location-btn" data-target="sonmarg-valley">Sonmarg Valley</button>
+        <button class="location-btn" data-target="pahalgam-valley">Pahalgam Valley</button>
+        <button class="location-btn" data-target="gulmarg-valley">Gulmarg Valley</button>
+      </div>
+    </section>
+
+    <!-- Sonmarg Slide -->
+    <section class="slide" id="sonmarg-valley">
+      <h2>Sonmarg Valley</h2>
+      <p>Sonmarg is famous for breathtaking glaciers and adventure sports like trekking and river rafting.</p>
+      <div class="gallery">
+
+
+   <img src="./Sonamarg13.jpg" alt="viewport">
+
+   
+   <img src="./Enroute_sonmarg_all_covered_in_snow.jpg" alt="Sonmarg"> 
+
+   
+<img src="./Amazing_SONAMARG.jpg" alt="Sonmarg">
+
+<img src="./Life_in_valley.jpg" alt="view">
+
+<img src="./Sonamarg__Meadow_of_Gold__(14592437483).jpg" alt="Sonmarg">
+      </div>
+      <iframe src="./embed(8).html" allowfullscreen="" loading="lazy"></iframe>
+
+<p></p><h3>Sonamarg or Sonmarg , known as Sonamarag (Kashmiri pronunciation: [sɔnɨmarɨɡ]; lit. 'meadow of gold') in Kashmiri, is a hill station located in the Ganderbal District of Jammu and Kashmir, India. It is located about 62 kilometers from Ganderbal Town and 80 kilometres (50 mi) northeast of the capital city, Srinagar.</h3><p></p>
+
+
+    </section>
+
+
+    <!-- Pahalgam Slide -->
+    <section class="slide" id="pahalgam-valley">
+      <h2>Pahalgam Valley</h2>
+      <p>Pahalgam is popular among tourists for its scenic landscapes and trout fishing.</p>
+      <div class="gallery">
+
+
+<img src="./_1_Himalayas_India_,_Pahalgam_June_2013.jpg" alt="Pahalgam">
+
+<img src="./Hotel_by_the_Lidder_river,_Pahalgam_2012.jpg" alt="hotel Pahalgam">
+       
+<img src="./Man_with_horse,_Aru_Valley,_Pahalgam,_India.jpg" alt="view">
+
+<img src="./2560px-Pahalgam_(3).jpg" alt="Pahalgam">
+
+
+<img src="./Pahalgam_J&amp;K.jpg" alt="Pahalgam">
+
+
+
+<p></p><h5>The 2025 Pahalgam attack was a terrorist attack on tourists by at least three armed terrorists near Pahalgam in India's Jammu and Kashmir in which 26 civilians were killed on 22 April 2025. The militants targeted Hindu tourists, though a Christian tourist and a local Muslim were also killed.[7][8][9] The attackers, armed with M4 carbines and AK-47s, entered the Baisaran Valley, a famous tourist spot, through the surrounding forests.[10] This incident is considered the deadliest attack on civilians in India since the 2008 Mumbai attacks.[11][12]</h5><p></p>
+  
+
+
+
+
+
+      </div>
+      <iframe src="./embed(9).html" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Gulmarg Slide -->
+    <section class="slide" id="gulmarg-valley">
+      <h2>Gulmarg Valley</h2>
+      <p>Gulmarg is famous for skiing, golf course, and stunning mountain views.</p>
+      <div class="gallery">
+
+
+    <img src="./Gulmarg_-_Jannat_on_Earth.jpg" alt="gulmarg">
+
+    <img src="./(1)_Gulmarg_Himalayas_India_March_2013.jpg" alt="Gulmarg">
+
+    <img src="./Alpather_lake,Gulmarg.jpg" alt="view">
+       
+       <img src="./Gulmarg_-_Srinagar_views_124.JPG" alt="sliding">
+     
+      <img src="./Gulmarg_-_Srinagar_views_43.JPG" alt="gulmarg">
+
+      <img src="./Gulmarg,_Kashmir.jpg" alt="animal">
+
+
+   <p></p><h3> Gulmarg lies in a cup-shaped valley in the Pir Panjal Range of the Himalayas, at an altitude of, 2,650 m (8,690 ft). It is located about 56 km (35 mi) from Srinagar, in Baramulla district of the Indian union territory of Jammu and Kashmir.[10][12] The soil in Gulmarg comprises glacial deposits, lacustrine deposits, and moraines from Pleistocene epoch covering shales, limestones, sandstones, schists and other varieties of rocks.[26] The natural meadows of Gulmarg, which are covered with snow in winter, allow the growth of wild flowers such as daisies, forget-me-nots and buttercups during the spring and summer.[12][9] The meadows are interspersed by parks and small lakes, and are surrounded by forests of pine and fir trees.[12] Apharwat Peak, rising to 4,267 m (13,999 ft), overlooks Gulmarg, and offers a view of Nanga Parbat and Harmukh peaks.[12][14]  </h3><p></p>
+
+
+      </div>
+      <iframe src="./embed(10).html" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>project created by millu thakur &amp; nassir batt .</p>
+  </footer>
+
+  <script src="file:///C:/Users/91902/Desktop/readyprjt_files/script.js.download"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a2fac48ee5ba65d',t:'MTc2Mzg5MDQ4OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource.html"></iframe><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" src="./saved_resource(8).html"></iframe><script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;95d4af946c9a4d229ea725f950960b54&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+  
+
+    <script type="text/javascript">
+
+// Navigation and slides logic
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".slide");
+  const navButtons = document.querySelectorAll(".nav-btn");
+  const locationButtons = document.querySelectorAll(".location-btn");
+
+  function showSlide(id) {
+    slides.forEach(slide => {
+      slide.classList.toggle("active", slide.id === id);
+    });
+
+    // Update nav active button
+    navButtons.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.target === id);
+    });
+  }
+
+  // Navbar clicks
+  navButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      showSlide(btn.dataset.target);
+    });
+  });
+
+  // Location buttons clicks
+  locationButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      showSlide(btn.dataset.target);
+      // Scroll top on slide switch
+      const activeSlide = document.getElementById(btn.dataset.target);
+      if (activeSlide) activeSlide.scrollTop = 0;
+    });
+  });
+
+  // Initialize home slide
+  showSlide("home");
+});
+
+  </script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: ""
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+  <script>
+    const allLines = []
+    const cssElement = document.querySelector("#compiled-css")
+
+    window.addEventListener("message", (message) => {
+        if (message.data.console){
+          let insert = document.querySelector("#insert")
+          allLines.push(message.data.console.payload)
+          insert.innerHTML = allLines.join(";\r")
+
+          let result = eval.call(null, message.data.console.payload)
+          if (result !== undefined){
+            console.log(result)
+          }
+        }
+
+      if (message.data.css){
+        cssElement.textContent = message.data.css.payload
+      }
+
+      if (message.data.html){
+        document.body.innerHTML = message.data.html.payload
+      }
+    })
+
+    if (window.parent){
+      window.parent.postMessage({loaded: true}, "*")
+    }
+  </script>
+</body></html>

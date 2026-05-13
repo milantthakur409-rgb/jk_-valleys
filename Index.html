@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JK Valleys – Tourism &amp; Location</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: skyblue;
+      color: #e0f2f1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      margin: 20px 0;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px #0008;
+    }
+    .navbar {
+      background: #00251a;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px #0009;
+    }
+    .navbar .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #a5d6a7;
+      letter-spacing: 1.2px;
+    }
+    .nav-links { list-style: none; display: flex; gap: 15px; }
+    .nav-links li button {
+      background: transparent;
+      border: none;
+      color: #a5d6a7;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    .nav-links li button:hover, .nav-links li button.active {
+      background: #a5d6a7;
+      color: #00251a;
+    }
+    #back-btn {
+      background: #a5d6a7;
+      color: #00251a;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 14px;
+      display: none;
+      transition: background 0.2s;
+    }
+    #back-btn:hover { background: #fff; }
+    main {
+      flex-grow: 1;
+      padding: 20px;
+      position: relative;
+      max-width: 900px;
+      margin: 20px auto;
+      background: rgba(0,0,0,0.3);
+      border-radius: 12px;
+      box-shadow: 0 0 20px #004d40;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    .slide {
+      opacity: 0;
+      transform: translateX(100%);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      transition: all 0.6s ease;
+      padding: 20px;
+      pointer-events: none;
+      overflow-y: auto;
+      max-height: 600px;
+      background: rgba(0,77,64,0.8);
+      border-radius: 12px;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      position: relative;
+      pointer-events: auto;
+    }
+    .location-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+    .location-buttons.column { flex-direction: column; align-items: center; }
+    .location-btn {
+      background: #004d40;
+      border: 2px solid #a5d6a7;
+      color: #a5d6a7;
+      padding: 12px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      transition: 0.3s ease;
+      min-width: 180px;
+      text-align: center;
+    }
+    .location-btn:hover { background: #a5d6a7; color: #004d40; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 10px black;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover { transform: scale(1.07); }
+    iframe {
+      width: 100%; height: 320px;
+      border: none; border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 0 15px black;
+    }
+    footer {
+      text-align: center;
+      padding: 12px;
+      background: #00251a;
+      font-size: 0.9rem;
+      color: #a5d6a7;
+      letter-spacing: 1px;
+    }
+    .slide::-webkit-scrollbar { width: 8px; }
+    .slide::-webkit-scrollbar-track { background: #00251a; border-radius: 6px; }
+    .slide::-webkit-scrollbar-thumb { background: #a5d6a7; border-radius: 6px; }
+    @media (max-width: 720px) {
+      main { max-width: 100%; padding: 10px; min-height: 100vh; }
+      .nav-links { font-size: 0.9rem; }
+      .location-btn { min-width: 140px; font-size: 1rem; }
+      h1, h2, h3 { font-size: 1.4rem; }
+      .gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .navbar .logo { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">JK Valleys</div>
+  <ul class="nav-links">
+    <li><button class="nav-btn" data-target="home">Home</button></li>
+    <li><button class="nav-btn" data-target="jammu-division">Jammu Division</button></li>
+    <li><button class="nav-btn" data-target="kashmir-division">Kashmir Division</button></li>
+  </ul>
+</nav>
+
+<main id="main-content">
+  <button id="back-btn">&#8592; Back</button>
+
+  <!-- Home -->
+  <section class="slide active" id="home">
+    <h1>Welcome to the Beautiful Valleys of Jammu &amp; Kashmir</h1>
+    <p style="text-align:center;margin:10px 20px 20px;font-size:1.05rem;">
+      Explore the mesmerizing valleys of Jammu &amp; Kashmir through interactive slides with beautiful images, maps, and detailed information.
+    </p>
+  </section>
+
+  <!-- Jammu Division -->
+  <section class="slide" id="jammu-division">
+    <h2>Jammu Division</h2>
+    <p style="text-align:center;">Select a location to explore:</p>
+    <div class="location-buttons">
+      <button class="location-btn" data-target="bhaderwah">Bhaderwah Valley</button>
+      <button class="location-btn" data-target="dachhan">Dachhan Valley (Kishtwar)</button>
+    </div>
+  </section>
+
+  <!-- Bhaderwah -->
+  <section class="slide" id="bhaderwah">
+    <h2>Bhaderwah Valley</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">
+      <b>Location:</b> Dhoon district, J&amp;K; ~200 km from Jammu.<br>
+      <b>Altitude:</b> 1,600–2,000 m, surrounded by the Pir Panjal range.<br>
+      <b>Highlights:</b> Lush meadows, deodar forests, Bhadar River; nearby Padri Top and Jagdamba Temple.<br>
+      <b>Climate:</b> Mild summers (20–30°C), cold winters with snow.<br>
+      <b>Activities:</b> Trekking, horse-riding, camping, snow-shoeing, trout fishing.<br>
+      <b>Access:</b> Road via NH 44; nearest railhead at Udhampur.
+    </p>
+    <div class="location-buttons column">
+      <button class="location-btn" data-target="jai-valley">Jai Valley</button>
+      <button class="location-btn" data-target="padri">Padri Top</button>
+      <button class="location-btn" data-target="gulli-danda">Gulli Danda</button>
+      <button class="location-btn" data-target="bhaderwah-town">Bhaderwah Town</button>
+    </div>
+  </section>
+
+  <!-- Jai Valley -->
+  <section class="slide" id="jai-valley">
+    <h2>Jai Valley</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">
+      <b>Location:</b> 32 km from Bhaderwah, J&amp;K.<br>
+      <b>Highlights:</b> Wide green meadows, deodar forests, Jai Nallah stream.<br>
+      <b>Activities:</b> Camping, trekking, horse riding, winter snow sports.<br>
+      <b>Accommodation:</b> Igloo huts, tents, youth hostels.<br>
+      <b>Atmosphere:</b> Peaceful and scenic — perfect for nature lovers.
+    </p>
+    <div class="gallery">
+      <img src="https://cdn.s3waas.gov.in/s3dc6a70712a252123c40d2adba6a11d84/uploads/bfi_thumb/2018102162-olwdeplkrvsyjz9718lpmuzqu8wpq9xlzlveba6g2c.jpg" alt="Jai Valley"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Jai_Valley.jpg" alt="Jai Valley"/>
+    </div>
+    <h3>History &amp; Location</h3>
+    <p style="text-align:center;margin-bottom:10px;">One of the most visited locations near Bhaderwah, famous for natural beauty and trekking routes.</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33836.29714745166!2d75.74627193616503!3d33.02728716936421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b58a85acb94fd%3A0x57ef062a2ed68a99!2sJai%20Valley%2C%20Bhaderwah%2C%20Jammu%20and%20Kashmir!5e0!3m2!1sen!2sus!4v1698155374893" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- Padri -->
+  <section class="slide" id="padri">
+    <h2>Padri Top</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">
+      Padri, 40 km north of Bhaderwah on NH 44 at about 10,200 ft, is a snow-capped meadow famed for panoramic views, trekking, horse-riding, paragliding and winter sports. Nearby Bhal Padri (11,000 ft — "Valley of Flowers") lies 10 km away.<br><br>
+      Best time: May–June for wildflowers, September for clear weather, December–February for snow.
+    </p>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Padri_Bhaderwah.jpg" alt="Padri"/>
+      <img src="https://prestinetravels.com/wp-content/uploads/2023/05/paye-meadows-kpk-shogran3-min.jpg" alt="Padri meadow"/>
+      <img src="https://anenigmaticindian.com/wp-content/uploads/2023/12/IMG_20231226_201405.jpg" alt="Padri view"/>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33836.29714745166!2d75.74627193616503!3d33.02728716936421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b58a85acb94fd%3A0x57ef062a2ed68a99!2sPadri%2C%20Bhaderwah%2C%20Jammu%20and%20Kashmir!5e0!3m2!1sen!2sus!4v1698155612349" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- Gulli Danda -->
+  <section class="slide" id="gulli-danda">
+    <h2>Gulli Danda</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">Gulli Danda is a beautiful meadow near Bhaderwah known for its natural splendor and hiking trails.</p>
+    <div class="gallery">
+      <img src="https://i.ytimg.com/vi/BXq_Jdbd-oE/hqdefault.jpg" alt="Gulli Danda"/>
+      <img src="https://i.ytimg.com/vi/Rof6RiLoE84/hqdefault.jpg" alt="Gulli Danda"/>
+      <img src="https://i.ytimg.com/vi/dCYjqeAaJOU/maxresdefault.jpg" alt="Gulli Danda"/>
+      <img src="https://travelogyindia.b-cdn.net/blog/wp-content/uploads/2015/10/Pine-Trees-of-Dalhousie-1-1024x682.jpg" alt="Pine trees"/>
+      <img src="https://kashmirdotcom.in/wp-content/uploads/2023/12/Guldanda-charms-tourists-at-Vibrant-Bhaderwah-Festival.jpg" alt="Gulli Danda festival"/>
+    </div>
+    <h3>Map Location</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33836.29714745166!2d75.71779760784019!3d33.03219965703994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b5f1785bc5c6d%3A0x50970e6d487973c6!2sGulli%20Danda%2C%20Bhaderwah%2C%20Jammu%20and%20Kashmir!5e0!3m2!1sen!2sus!4v1698155748901" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- Bhaderwah Town -->
+  <section class="slide" id="bhaderwah-town">
+    <h2>Bhaderwah Town</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">
+      Bhaderwah is a scenic hill town in Doda district, often called "Mini Kashmir" for its lush green valleys and pleasant climate. Located at 1,600–2,000 m altitude, it is the base for exploring Padri, Jai Valley, and Gulli Danda. Known for lavender farms, Jagdamba Temple, and traditional culture.
+    </p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26557.27876617487!2d75.71779760784019!3d33.13219965703994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b5dba5b5b5b5b%3A0x5b5b5b5b5b5b5b5b!2sBhaderwah%2C%20Jammu%20and%20Kashmir!5e0!3m2!1sen!2sin!4v1698155900000" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- Dachhan Valley -->
+  <section class="slide" id="dachhan">
+    <h2>Dachhan Valley (Kishtwar)</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">
+      A remote and pristine valley in Kishtwar district known for spiritual significance and natural beauty.<br><br>
+      <b>Narad Kund:</b> A sacred natural hot water spring believed to have healing properties.<br><br>
+      <b>Tri Sandhya Jaldhara:</b> A miraculous stream flowing three times a day, believed to perform prayers for Lord Shiva, Parvati, and Brahma.<br><br>
+      <b>Brahmsar:</b> A serene sky-blue lake at the foot of Brahma Peaks — bathing here is considered highly auspicious.<br><br>
+      <b>Other Attractions:</b> Doodh Ganga river, Brahma Peaks, Ram Mandir Kaikoot, Maa Kali Temple at Dilgoot, hot springs at Kiyar Dachhan.
+    </p>
+    <img src="https://i.ytimg.com/vi/hWl5dRAFbr0/oar2.jpg" alt="Doodh Ganga" style="width:100%;border-radius:12px;margin:10px 0;box-shadow:0 0 10px black;"/>
+    <h3>Doodh Ganga — The Pristine Milky-White River</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.123456789!2d76.123456!3d33.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2zMzPCsDA3JzI4LjAiTiA3NsKwMDcnMjguMCJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- Kashmir Division -->
+  <section class="slide" id="kashmir-division">
+    <h2>Kashmir Division</h2>
+    <p style="text-align:center;">Select a location to explore:</p>
+    <div class="location-buttons">
+      <button class="location-btn" data-target="sonmarg-valley">Sonmarg Valley</button>
+      <button class="location-btn" data-target="pahalgam-valley">Pahalgam Valley</button>
+      <button class="location-btn" data-target="gulmarg-valley">Gulmarg Valley</button>
+    </div>
+  </section>
+
+  <!-- Sonmarg -->
+  <section class="slide" id="sonmarg-valley">
+    <h2>Sonmarg Valley</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">
+      Sonmarg (meaning "Meadow of Gold") is a hill station in Ganderbal District, about 80 km northeast of Srinagar. Famous for breathtaking glaciers and adventure sports like trekking and river rafting.
+    </p>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Sonamarg13.jpg/500px-Sonamarg13.jpg" alt="Sonmarg"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Enroute_sonmarg_all_covered_in_snow.jpg/1280px-Enroute_sonmarg_all_covered_in_snow.jpg" alt="Sonmarg snow"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Amazing_SONAMARG.jpg/1280px-Amazing_SONAMARG.jpg" alt="Amazing Sonmarg"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Life_in_valley.jpg/1280px-Life_in_valley.jpg" alt="Valley life"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sonamarg_%22Meadow_of_Gold%22_%2814592437483%29.jpg/1280px-Sonamarg_%22Meadow_of_Gold%22_%2814592437483%29.jpg" alt="Sonmarg meadow of gold"/>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782!2d75.156!3d34.047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1a28f0a861f3b%3A0x52f88e90a4e56f08!2sSonmarg%2C%20Jammu%20and%20Kashmir!5e0!3m2!1sen!2sus!4v1698156300000" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- Pahalgam -->
+  <section class="slide" id="pahalgam-valley">
+    <h2>Pahalgam Valley</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">
+      Pahalgam is popular among tourists for its scenic landscapes, Lidder River, and trout fishing. It also serves as a base camp for the Amarnath Yatra.
+    </p>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/%221_Himalayas_India%22%2C_Pahalgam_June_2013.jpg/250px-%221_Himalayas_India%22%2C_Pahalgam_June_2013.jpg" alt="Pahalgam"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Hotel_by_the_Lidder_river%2C_Pahalgam_2012.jpg/1280px-Hotel_by_the_Lidder_river%2C_Pahalgam_2012.jpg" alt="Lidder river"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Man_with_horse%2C_Aru_Valley%2C_Pahalgam%2C_India.jpg/1280px-Man_with_horse%2C_Aru_Valley%2C_Pahalgam%2C_India.jpg" alt="Aru Valley horse"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Pahalgam_%283%29.jpg/2560px-Pahalgam_%283%29.jpg" alt="Pahalgam view"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Pahalgam_J%26K.jpg/1280px-Pahalgam_J%26K.jpg" alt="Pahalgam JK"/>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782!2d75.356!3d34.031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1a2f0a861f3b%3A0x52f88e90b4e56a08!2sPahalgam%2C%20Jammu%20and%20Kashmir!5e0!3m2!1sen!2sus!4v1698156400000" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <!-- Gulmarg -->
+  <section class="slide" id="gulmarg-valley">
+    <h2>Gulmarg Valley</h2>
+    <p style="margin:10px 0 20px;line-height:1.8;">
+      Gulmarg lies in a cup-shaped valley in the Pir Panjal Range at 2,650 m (8,690 ft), about 56 km from Srinagar in Baramulla district. Famous for skiing, Asia's highest golf course, and stunning views of Nanga Parbat from Apharwat Peak (4,267 m). The meadows bloom with wildflowers in spring and are blanketed in snow in winter.
+    </p>
+    <div class="gallery">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gulmarg_-_Jannat_on_Earth.jpg/1280px-Gulmarg_-_Jannat_on_Earth.jpg" alt="Gulmarg jannat"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/%281%29_Gulmarg_Himalayas_India_March_2013.jpg" alt="Gulmarg Himalayas"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Alpather_lake%2CGulmarg.jpg/1280px-Alpather_lake%2CGulmarg.jpg" alt="Alpather lake"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Gulmarg_-_Srinagar_views_124.JPG/1280px-Gulmarg_-_Srinagar_views_124.JPG" alt="Gulmarg skiing"/>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gulmarg%2C_Kashmir.jpg/1280px-Gulmarg%2C_Kashmir.jpg" alt="Gulmarg Kashmir"/>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782!2d74.381!3d34.048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e1a36e0a962f3b%3A0x52f88e94a4c56f08!2sGulmarg%2C%20Jammu%20and%20Kashmir!5e0!3m2!1sen!2sus!4v1698156500000" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+</main>
+
+<footer>
+  <p>Project created by Millu Thakur &amp; Nassir Batt</p>
+</footer>
+
+<script>
+  const navHistory = [];
+
+  function showSlide(targetId) {
+    const current = document.querySelector('.slide.active');
+    const target = document.getElementById(targetId);
+    if (!target || !current || current.id === targetId) return;
+    navHistory.push(current.id);
+    current.classList.remove('active');
+    target.classList.add('active');
+    target.scrollTop = 0;
+    document.getElementById('back-btn').style.display = 'inline-block';
+  }
+
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      navHistory.length = 0;
+      const current = document.querySelector('.slide.active');
+      const target = document.getElementById(btn.getAttribute('data-target'));
+      if (!target || !current) return;
+      current.classList.remove('active');
+      target.classList.add('active');
+      target.scrollTop = 0;
+      document.getElementById('back-btn').style.display = 'none';
+    });
+  });
+
+  document.querySelectorAll('.location-btn').forEach(btn => {
+    btn.addEventListener('click', () => showSlide(btn.getAttribute('data-target')));
+  });
+
+  document.getElementById('back-btn').addEventListener('click', () => {
+    if (navHistory.length === 0) return;
+    const prev = navHistory.pop();
+    const current = document.querySelector('.slide.active');
+    current.classList.remove('active');
+    document.getElementById(prev).classList.add('active');
+    document.getElementById('back-btn').style.display = navHistory.length > 0 ? 'inline-block' : 'none';
+  });
+</script>
+
+</body>
+  </html>
